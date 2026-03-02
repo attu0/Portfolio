@@ -52,7 +52,7 @@ function Contact() {
                         <div className="contact-info-icon">📧</div>
                         <div className="contact-info-text">
                             <h4>Email</h4>
-                            <p>atharv@example.com</p>
+                            <p>atharvmudse@gmail.com</p>
                         </div>
                     </div>
 
