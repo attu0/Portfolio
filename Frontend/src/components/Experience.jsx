@@ -3,11 +3,22 @@ import React from "react";
 const fallbackExperiences = [
     {
         _id: "1",
-        role: "Full-Stack Developer",
-        company: "Freelance",
-        location: "India",
-        startDate: "2024",
-        endDate: "Present",
+        role: "AI Developer Intern",
+        company: "Cognidolph",
+        location: "Nashik, Maharashtra",
+        startDate: "June 2025",
+        endDate: " July 2025",
+        description:
+            "Developed a low-latency, full-stack voice assistant using the MERN stack and WebSockets, leveraging Ollama and open-source STT/TTS models to create a high-performance, API-independent AI pipeline.",
+        technologies: ["Ollama","Whisper","FastApi","React", "Node.js", "MongoDB", "Express"],
+    },
+    {
+        _id: "2",
+        role: "Python Developer",
+        company: "Elmaze - NETRA RIT",
+        location: "Islampur, Sangli, Mahrastra",
+        startDate: "April 2024",
+        endDate: " May 2024",
         description:
             "Building modern web applications using the MERN stack for various clients.",
         technologies: ["React", "Node.js", "MongoDB", "Express"],

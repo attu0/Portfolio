@@ -1,17 +1,17 @@
 # 🚀 Atharv Mudse — Portfolio
 
-A modern, full-stack portfolio website built with the **MERN stack** (MongoDB, Express, React, Node.js). Features a sleek dark theme with glassmorphism, smooth animations, and a fully database-driven backend.
+A modern frontend portfolio website built with **React + Vite**. It features a sleek dark theme with glassmorphism, smooth animations, and locally managed content (no backend required).
 
 ## ✨ Features
 
 - **Hero** — Gradient intro with circular profile image
-- **About** — Auto-sliding project carousel with dot navigation
-- **Skills** — Dynamic skill categories fetched from the database
-- **Experience** — Interactive timeline of work history
-- **Education** — Academic background with timeline layout
-- **Projects** — Project cards with tech tags, GitHub & live demo links
-- **Testimonials** — Client feedback cards with star ratings
-- **Contact** — Working contact form that saves messages to MongoDB
+- **About** — Auto-sliding project-style highlights with dot navigation
+- **Skills** — Skill categories rendered from local component data
+- **Experience** — Interactive timeline rendered from local component data
+- **Education** — Academic timeline rendered from local component data
+- **Projects** — Project cards with tech tags and links
+- **Testimonials** — Feedback cards with star ratings
+- **Contact** — Frontend-only contact form UX
 - **Responsive** — Fully mobile-friendly with animated navigation
 
 ## 🛠️ Tech Stack
@@ -19,41 +19,20 @@ A modern, full-stack portfolio website built with the **MERN stack** (MongoDB, E
 | Layer | Technologies |
 |-------|-------------|
 | **Frontend** | React, Vite, CSS3 (custom design system) |
-| **Backend** | Node.js, Express.js, REST API |
-| **Database** | MongoDB Atlas, Mongoose ODM |
-| **Tools** | Git, GitHub, Postman, VS Code |
+| **Tools** | Git, GitHub, VS Code |
 
 ## 📂 Project Structure
 
 ```
 Portfolio/
-├── Backend/
-│   ├── config/db.js          # MongoDB connection
-│   ├── models/               # Mongoose schemas
-│   │   ├── Project.js
-│   │   ├── Skill.js
-│   │   ├── Experience.js
-│   │   ├── Education.js
-│   │   ├── Message.js
-│   │   └── Testimonial.js
-│   ├── routes/               # Express API routes
-│   │   ├── projectRoutes.js
-│   │   ├── skillRoutes.js
-│   │   ├── experienceRoutes.js
-│   │   ├── educationRoutes.js
-│   │   ├── messageRoutes.js
-│   │   └── testimonialRoutes.js
-│   ├── seed.js               # Database seeder script
-│   ├── server.js             # Express app entry point
-│   └── .env                  # Environment variables
 ├── Frontend/
 │   ├── public/               # Static assets (profile image)
 │   ├── src/
-│   │   ├── components/       # React components
+│   │   ├── components/       # React components + local section data
 │   │   ├── App.jsx           # Main app layout
 │   │   ├── App.css           # Full design system
 │   │   └── index.css         # Global base styles
-│   └── vite.config.js        # Vite + proxy config
+│   └── vite.config.js        # Vite config
 └── README.md
 ```
 
@@ -62,7 +41,6 @@ Portfolio/
 ### Prerequisites
 
 - Node.js (v18+)
-- MongoDB Atlas account (or local MongoDB)
 
 ### 1. Clone the repo
 
@@ -71,33 +49,7 @@ git clone https://github.com/attu0/Portfolio.git
 cd Portfolio
 ```
 
-### 2. Set up the backend
-
-```bash
-cd Backend
-npm install
-```
-
-Create a `.env` file:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-```
-
-Seed the database with sample data:
-
-```bash
-node seed.js
-```
-
-Start the server:
-
-```bash
-npm start
-```
-
-### 3. Set up the frontend
+### 2. Run the frontend
 
 ```bash
 cd Frontend
@@ -105,28 +57,18 @@ npm install
 npm run dev
 ```
 
-Visit **http://localhost:3000** — the frontend proxies API calls to the backend on port 5000.
-
-## 📡 API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/health` | Health check |
-| `GET/POST/PUT/DELETE` | `/api/projects` | Manage projects |
-| `GET/POST/PUT/DELETE` | `/api/skills` | Manage skill categories |
-| `GET/POST/PUT/DELETE` | `/api/experience` | Manage work experience |
-| `GET/POST/PUT/DELETE` | `/api/education` | Manage education |
-| `GET/POST` | `/api/messages` | Contact form messages |
-| `GET/POST/PUT/DELETE` | `/api/testimonials` | Manage testimonials |
+Visit **http://localhost:3000**.
 
 ## 📝 Customizing Your Data
 
-Edit `Backend/seed.js` with your actual projects, skills, experience, and education, then run:
+Update local data directly inside these components:
 
-```bash
-cd Backend
-node seed.js
-```
+- `Frontend/src/components/Projects.jsx`
+- `Frontend/src/components/Skills.jsx`
+- `Frontend/src/components/Experience.jsx`
+- `Frontend/src/components/Education.jsx`
+- `Frontend/src/components/Testimonials.jsx`
+- `Frontend/src/components/About.jsx`
 
 For your profile photo, place it at `Frontend/public/profile.jpg`.
 
