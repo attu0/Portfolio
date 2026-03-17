@@ -19,22 +19,10 @@ function Contact() {
         setSending(true);
         setStatus(null);
 
-        try {
-            const res = await fetch("/api/messages", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
-
-            if (!res.ok) throw new Error("Failed to send");
-
-            setStatus("success");
-            setFormData({ name: "", email: "", subject: "", message: "" });
-        } catch {
-            setStatus("error");
-        } finally {
-            setSending(false);
-        }
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setSending(false);
     };
 
     return (
@@ -131,7 +119,7 @@ function Contact() {
 
                     {status === "success" && (
                         <div className="form-status success">
-                            ✅ Message sent successfully! I'll get back to you soon.
+                            ✅ Message submitted locally. Please email me directly for a response.
                         </div>
                     )}
                     {status === "error" && (

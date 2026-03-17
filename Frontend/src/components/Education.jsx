@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const fallbackEducation = [
     {
@@ -14,25 +14,7 @@ const fallbackEducation = [
 ];
 
 function Education() {
-    const [education, setEducation] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetchEducation();
-    }, []);
-
-    const fetchEducation = async () => {
-        try {
-            const res = await fetch("/api/education");
-            if (!res.ok) throw new Error("Failed to fetch");
-            const data = await res.json();
-            setEducation(data.length > 0 ? data : fallbackEducation);
-        } catch {
-            setEducation(fallbackEducation);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const education = fallbackEducation;
 
     return (
         <section className="section education" id="education">
@@ -43,41 +25,35 @@ function Education() {
                     My academic background and qualifications.
                 </p>
 
-                {loading ? (
-                    <div className="loading-grid">
-                        <div className="skeleton-card"></div>
-                    </div>
-                ) : (
-                    <div className="timeline">
-                        {education.map((edu, idx) => (
-                            <div
-                                className="timeline-item animate-in"
-                                key={edu._id || idx}
-                                style={{ animationDelay: `${idx * 0.15}s` }}
-                            >
-                                <div className="timeline-marker"></div>
-                                <div className="timeline-content">
-                                    <div className="timeline-header">
-                                        <h3>{edu.degree}</h3>
-                                        <span className="timeline-date">
-                                            {edu.startYear} — {edu.endYear}
-                                        </span>
-                                    </div>
-                                    <p className="timeline-company">
-                                        {edu.institution}
-                                        {edu.location ? ` · ${edu.location}` : ""}
-                                    </p>
-                                    {edu.description && (
-                                        <p className="timeline-description">{edu.description}</p>
-                                    )}
-                                    {edu.grade && (
-                                        <p className="timeline-grade">Grade: {edu.grade}</p>
-                                    )}
+                <div className="timeline">
+                    {education.map((edu, idx) => (
+                        <div
+                            className="timeline-item animate-in"
+                            key={edu._id || idx}
+                            style={{ animationDelay: `${idx * 0.15}s` }}
+                        >
+                            <div className="timeline-marker"></div>
+                            <div className="timeline-content">
+                                <div className="timeline-header">
+                                    <h3>{edu.degree}</h3>
+                                    <span className="timeline-date">
+                                        {edu.startYear} — {edu.endYear}
+                                    </span>
                                 </div>
+                                <p className="timeline-company">
+                                    {edu.institution}
+                                    {edu.location ? ` · ${edu.location}` : ""}
+                                </p>
+                                {edu.description && (
+                                    <p className="timeline-description">{edu.description}</p>
+                                )}
+                                {edu.grade && (
+                                    <p className="timeline-grade">Grade: {edu.grade}</p>
+                                )}
                             </div>
-                        ))}
-                    </div>
-                )}
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const fallbackTestimonials = [
     {
@@ -22,25 +22,7 @@ const fallbackTestimonials = [
 ];
 
 function Testimonials() {
-    const [testimonials, setTestimonials] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetchTestimonials();
-    }, []);
-
-    const fetchTestimonials = async () => {
-        try {
-            const res = await fetch("/api/testimonials");
-            if (!res.ok) throw new Error("Failed to fetch");
-            const data = await res.json();
-            setTestimonials(data.length > 0 ? data : fallbackTestimonials);
-        } catch {
-            setTestimonials(fallbackTestimonials);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const testimonials = fallbackTestimonials;
 
     const renderStars = (rating) => {
         return "★".repeat(rating) + "☆".repeat(5 - rating);
@@ -55,44 +37,36 @@ function Testimonials() {
                     What people say about working with me.
                 </p>
 
-                {loading ? (
-                    <div className="loading-grid">
-                        {[1, 2].map((i) => (
-                            <div className="skeleton-card" key={i}></div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="testimonials-grid">
-                        {testimonials.map((t, idx) => (
-                            <div
-                                className="testimonial-card animate-in"
-                                key={t._id || idx}
-                                style={{ animationDelay: `${idx * 0.15}s` }}
-                            >
-                                <div className="testimonial-stars">
-                                    {renderStars(t.rating || 5)}
+                <div className="testimonials-grid">
+                    {testimonials.map((t, idx) => (
+                        <div
+                            className="testimonial-card animate-in"
+                            key={t._id || idx}
+                            style={{ animationDelay: `${idx * 0.15}s` }}
+                        >
+                            <div className="testimonial-stars">
+                                {renderStars(t.rating || 5)}
+                            </div>
+                            <p className="testimonial-message">"{t.message}"</p>
+                            <div className="testimonial-author">
+                                <div className="testimonial-avatar">
+                                    {t.avatar ? (
+                                        <img src={t.avatar} alt={t.name} />
+                                    ) : (
+                                        <span>{t.name.charAt(0)}</span>
+                                    )}
                                 </div>
-                                <p className="testimonial-message">"{t.message}"</p>
-                                <div className="testimonial-author">
-                                    <div className="testimonial-avatar">
-                                        {t.avatar ? (
-                                            <img src={t.avatar} alt={t.name} />
-                                        ) : (
-                                            <span>{t.name.charAt(0)}</span>
-                                        )}
-                                    </div>
-                                    <div className="testimonial-info">
-                                        <h4>{t.name}</h4>
-                                        <p>
-                                            {t.role}
-                                            {t.company ? ` at ${t.company}` : ""}
-                                        </p>
-                                    </div>
+                                <div className="testimonial-info">
+                                    <h4>{t.name}</h4>
+                                    <p>
+                                        {t.role}
+                                        {t.company ? ` at ${t.company}` : ""}
+                                    </p>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                )}
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

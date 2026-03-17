@@ -13,34 +13,11 @@ function About() {
     const timerRef = useRef(null);
 
     useEffect(() => {
-        fetchProjects();
-    }, []);
-
-    useEffect(() => {
         timerRef.current = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
         }, 3000);
         return () => clearInterval(timerRef.current);
     }, [slides.length]);
-
-    const fetchProjects = async () => {
-        try {
-            const res = await fetch("/api/projects");
-            if (!res.ok) throw new Error("Failed");
-            const data = await res.json();
-            if (data.length > 0) {
-                setSlides(
-                    data.map((p, i) => ({
-                        title: p.title,
-                        image: p.image || "",
-                        emoji: ["🤖", "🧠", "👁️", "⚙️", "🚀", "💡"][i % 6],
-                    }))
-                );
-            }
-        } catch {
-            // keep fallback slides
-        }
-    };
 
     return (
         <section className="section about" id="about">
