@@ -16,7 +16,7 @@ function Navigation() {
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
             <div className="container">
                 <a href="#" className="nav-logo">
-                    &lt;Atharv Mudse /&gt;
+                    &lt;Atharv Mudse/&gt;
                 </a>
                 <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
                     <li><a href="#about" onClick={handleLinkClick}>About</a></li>
