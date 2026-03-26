@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const fallbackSlides = [
-    { title: "Robotics", emoji: "🤖" },
-    { title: "AI Systems", emoji: "🧠" },
-    { title: "Computer Vision", emoji: "👁️" },
-    { title: "Embedded", emoji: "⚙️" },
+    { title: "Me On Mic", image: "/meonmike.png" },
+    {
+        title: "Disease Diagnosis Treatment Rover",
+        image: "/Disease%20Diagnosis%20Treatment%20Rover.png",
+    },
 ];
 
 function About() {

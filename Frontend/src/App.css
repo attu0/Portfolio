@@ -85,9 +85,10 @@
 
 .nav-logo {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
+    white-space: nowrap;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -100,7 +101,7 @@
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--text-secondary);
@@ -333,6 +334,7 @@
 .project-card,
 .contact-form,
 .timeline-content,
+.achievements-detail-card,
 .testimonial-card,
 .skeleton-card {
     position: relative;
@@ -344,6 +346,7 @@
 .project-card::before,
 .contact-form::before,
 .timeline-content::before,
+.achievements-detail-card::before,
 .testimonial-card::before,
 .skeleton-card::before {
     content: "";
@@ -369,6 +372,7 @@
 .project-card:hover::before,
 .contact-form:hover::before,
 .timeline-content:hover::before,
+.achievements-detail-card:hover::before,
 .testimonial-card:hover::before,
 .skeleton-card:hover::before {
     transform: rotate(-24deg) translateX(260%);
@@ -678,6 +682,133 @@
 .project-link-live:hover {
     background: var(--accent-primary);
     color: var(--bg-primary);
+}
+
+/* ===== Achievements & Events ===== */
+
+.achievements-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.achievements-visual {
+    position: relative;
+}
+
+.achievements-slideshow {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    background: var(--gradient-card);
+    border: 1px solid var(--border-primary);
+}
+
+.achievements-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.achievements-slide.active {
+    opacity: 1;
+}
+
+.achievements-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.achievements-image-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    background: var(--gradient-card);
+}
+
+.achievements-slide-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.achievements-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0;
+}
+
+.achievements-dot.active {
+    background: var(--accent-primary);
+    box-shadow: 0 0 8px var(--accent-glow);
+    transform: scale(1.3);
+}
+
+.achievements-text .section-subtitle {
+    margin-bottom: 26px;
+}
+
+.achievements-detail-card {
+    padding: 28px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius);
+}
+
+.achievements-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.achievements-detail-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.achievements-date {
+    padding: 4px 12px;
+    background: rgba(212, 212, 216, 0.1);
+    border: 1px solid rgba(212, 212, 216, 0.2);
+    border-radius: 16px;
+    font-size: 0.78rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.achievements-meta {
+    font-size: 0.9rem;
+    color: var(--accent-secondary);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.achievements-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
 }
 
 /* ===== Contact ===== */
@@ -1164,6 +1295,16 @@
 
     .timeline {
         padding-left: 30px;
+    }
+
+    .achievements-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .achievements-visual {
+        max-width: 420px;
+        margin: 0 auto;
     }
 
     .timeline-marker {

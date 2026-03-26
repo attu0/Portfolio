@@ -11,18 +11,7 @@ const fallbackEducation = [
         description:
             "Studying Computer Science with a focus on software engineering and web technologies.",
         CGPA: "9.4 / 10",
-    },
-    {
-        _id: "2",
-        degree: "Higher Secondary Education (Junior College)",
-        institution: "Gurukul English Medium School & Junior College, Ichalkaranji",
-        location: "India",
-        startYear: "2021",
-        endYear: "2023",
-        description:
-            "Completed junior college with a strong focus on science and mathematics.",
-        grade: "93.99% in MHTCET",
-    },
+    }
 ];
 
 function Education() {
