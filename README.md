@@ -1,81 +1,95 @@
-# 🚀 Atharv Mudse — Portfolio
+# Atharv Mudse Portfolio
 
-A modern frontend portfolio website built with **React + Vite**. It features a sleek dark theme with glassmorphism, smooth animations, and locally managed content (no backend required).
+A personal portfolio built with React and Vite. The site highlights robotics, AI, and software work through animated sections, project cards, timelines, and a contact form.
 
-## ✨ Features
+## Features
 
-- **Hero** — Gradient intro with circular profile image
-- **About** — Auto-sliding project-style highlights with dot navigation
-- **Skills** — Skill categories rendered from local component data
-- **Experience** — Interactive timeline rendered from local component data
-- **Education** — Academic timeline rendered from local component data
-- **Projects** — Project cards with tech tags and links
-- **Testimonials** — Feedback cards with star ratings
-- **Contact** — Frontend-only contact form UX
-- **Responsive** — Fully mobile-friendly with animated navigation
+- Responsive single-page layout with smooth section navigation
+- Hero section with profile image fallback logic
+- About section with auto-rotating slideshow
+- Skills grouped by category (Robotics, AI/Vision, CSE stack, Tools)
+- Work experience timeline
+- Achievements and events slideshow
+- Featured projects with GitHub and Live Demo links
+- Education and testimonials sections
+- Contact form UI with local success state (no backend submission)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-| Layer | Technologies |
-|-------|-------------|
-| **Frontend** | React, Vite, CSS3 (custom design system) |
-| **Tools** | Git, GitHub, VS Code |
+- React 19
+- Vite 7
+- Plain CSS (custom component styling)
 
-## 📂 Project Structure
+## Project Structure
 
-```
+```text
 Portfolio/
-├── Frontend/
-│   ├── public/               # Static assets (profile image)
-│   ├── src/
-│   │   ├── components/       # React components + local section data
-│   │   ├── App.jsx           # Main app layout
-│   │   ├── App.css           # Full design system
-│   │   └── index.css         # Global base styles
-│   └── vite.config.js        # Vite config
-└── README.md
+|-- frontend/
+|   |-- public/
+|   |-- src/
+|   |   |-- components/
+|   |   |-- App.jsx
+|   |   |-- App.css
+|   |   |-- index.css
+|   |   `-- main.jsx
+|   |-- index.html
+|   |-- package.json
+|   |-- vite.config.js
+|   `-- vercel.json
+`-- README.md
 ```
 
-## 🚀 Getting Started
+## Local Development
 
 ### Prerequisites
 
-- Node.js (v18+)
+- Node.js 18+
+- npm
 
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/attu0/Portfolio.git
-cd Portfolio
-```
-
-### 2. Run the frontend
+### Install and run
 
 ```bash
-cd Frontend
+cd frontend
 npm install
 npm run dev
 ```
 
-Visit **http://localhost:3000**.
+The app runs at `http://localhost:3000` (configured in `frontend/vite.config.js`).
 
-## 📝 Customizing Your Data
+## Build and Preview
 
-Update local data directly inside these components:
+```bash
+cd frontend
+npm run build
+npm run preview
+```
 
-- `Frontend/src/components/Projects.jsx`
-- `Frontend/src/components/Skills.jsx`
-- `Frontend/src/components/Experience.jsx`
-- `Frontend/src/components/Education.jsx`
-- `Frontend/src/components/Testimonials.jsx`
-- `Frontend/src/components/About.jsx`
+- Production build output: `frontend/dist`
 
-For your profile photo, place it at `Frontend/public/profile.jpg`.
+## Deployment
 
-## 📄 License
+This repo includes `frontend/vercel.json` for Vite deployment on Vercel:
 
-MIT — feel free to use this as a template for your own portfolio!
+- Build command: `npm run build`
+- Output directory: `dist`
+- SPA rewrites enabled to route all paths to `index.html`
 
----
+## Content Customization
 
-**Built with ❤️ by [Atharv Mudse](https://github.com/attu0)**
+Most site content is currently maintained as local arrays inside component files:
+
+- About slideshow: `frontend/src/components/About.jsx`
+- Skills: `frontend/src/components/Skills.jsx`
+- Experience: `frontend/src/components/Experience.jsx`
+- Achievements and events: `frontend/src/components/AchievementsEvents.jsx`
+- Projects: `frontend/src/components/Projects.jsx`
+- Education: `frontend/src/components/Education.jsx`
+- Testimonials: `frontend/src/components/Testimonials.jsx`
+- Contact details and messaging: `frontend/src/components/Contact.jsx`
+
+Static images are served from `frontend/public`.
+
+## Notes
+
+- The contact form currently simulates submission locally and shows a success message.
+- No backend/API dependency is required to run the current project.
