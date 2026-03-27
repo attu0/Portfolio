@@ -1082,6 +1082,7 @@
     transition: var(--transition-medium);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .testimonial-card:hover {
@@ -1089,6 +1090,28 @@
     border-color: var(--border-accent);
     transform: translateY(-6px);
     box-shadow: 0 20px 60px rgba(212, 212, 216, 0.08);
+}
+
+.testimonial-link-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-link-badge {
+    opacity: 1;
+    transform: scale(1.15);
 }
 
 .testimonial-stars {

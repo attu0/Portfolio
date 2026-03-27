@@ -3,21 +3,13 @@ import React from "react";
 const fallbackTestimonials = [
     {
         _id: "1",
-        name: "Alex Johnson",
-        role: "Project Manager",
-        company: "TechCorp",
+        name: "Mayur Tambe",
+        role: "Helping Founders unlock their true potential with brain based coaching",
+        company: "Cognidolph",
         message:
-            "Atharv delivered an outstanding web application. His attention to detail and ability to translate requirements into elegant code is impressive.",
+            "Atharv worked at my startup Cognidolph during his internship, and he truly stood out for his drive and growth mindset. Despite being only in his second year, he consistently pushed his limits, quickly picked up new concepts, and applied them effectively to our project. What impressed me most was his willingness to take on challenges head-on. He embraced every opportunity to learn, stayed committed to his responsibilities, and reliably delivered on what he promised. His contributions added real value to the team. I'm confident that with this attitude and work ethic, he will continue to achieve great things ahead.",
         rating: 5,
-    },
-    {
-        _id: "2",
-        name: "Sarah Williams",
-        role: "Startup Founder",
-        company: "InnovateLab",
-        message:
-            "Working with Atharv was a great experience. He built our MVP quickly and the code quality was excellent. Highly recommended!",
-        rating: 5,
+        linkedinUrl: "https://www.linkedin.com/in/neuromayur/", // Add your LinkedIn profile or recommendation link here
     },
 ];
 
@@ -26,6 +18,12 @@ function Testimonials() {
 
     const renderStars = (rating) => {
         return "★".repeat(rating) + "☆".repeat(5 - rating);
+    };
+
+    const handleRecommendationClick = (linkedinUrl) => {
+        if (linkedinUrl) {
+            window.open(linkedinUrl, "_blank");
+        }
     };
 
     return (
@@ -42,8 +40,15 @@ function Testimonials() {
                         <div
                             className="testimonial-card animate-in"
                             key={t._id || idx}
-                            style={{ animationDelay: `${idx * 0.15}s` }}
+                            style={{ animationDelay: `${idx * 0.15}s`, cursor: t.linkedinUrl ? "pointer" : "default" }}
+                            onClick={() => handleRecommendationClick(t.linkedinUrl)}
+                            title={t.linkedinUrl ? "Click to view on LinkedIn" : ""}
                         >
+                            {t.linkedinUrl && (
+                                <div className="testimonial-link-badge">
+                                    <span>→</span>
+                                </div>
+                            )}
                             <div className="testimonial-stars">
                                 {renderStars(t.rating || 5)}
                             </div>
