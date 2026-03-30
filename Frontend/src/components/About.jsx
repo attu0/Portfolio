@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 const fallbackSlides = [
     { title: "Me On Mic", image: "/meonmike.png" },
+    { title: "Profile", image: "/20251219_140755.jpg" },
     {
         title: "Disease Diagnosis Treatment Rover",
         image: "/Disease%20Diagnosis%20Treatment%20Rover.png",
