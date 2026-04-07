@@ -573,11 +573,74 @@
 }
 
 /* ===== Projects ===== */
+.projects-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.projects-carousel {
+    position: relative;
+    margin-top: 16px;
+    padding: 0 5px;
+}
+
+.projects-control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-primary);
+    background: rgba(5, 6, 8, 0.8);
+    backdrop-filter: blur(8px);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%);
+}
+
+.projects-control-btn:hover {
+    border-color: var(--border-accent);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.projects-control-btn:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+.projects-control-left {
+    left: 8px;
+}
+
+.projects-control-right {
+    right: 8px;
+}
+
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 28px;
-    margin-top: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 6px;
+    padding: 2px 6px 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.projects-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .project-card {
@@ -587,6 +650,9 @@
     overflow: hidden;
     transition: var(--transition-medium);
     position: relative;
+    flex: 0 0 min(360px, calc(100vw - 240px));
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .project-card:hover {
@@ -614,7 +680,7 @@
 }
 
 .project-body {
-    padding: 28px;
+    padding: 22px;
 }
 
 .project-body h3 {
@@ -1277,8 +1343,35 @@
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 18px;
+    }
+
     .section {
-        padding: 80px 0;
+        padding: 72px 0;
+    }
+
+    .section-label {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        padding: 6px 14px;
+    }
+
+    .section-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    .navbar .container {
+        gap: 12px;
+    }
+
+    .nav-logo {
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+        max-width: calc(100% - 60px);
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .nav-links {
@@ -1287,37 +1380,99 @@
         top: var(--nav-height);
         left: 0;
         right: 0;
+        bottom: 0;
         background: rgba(5, 6, 8, 0.96);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 32px 24px;
-        gap: 24px;
+        padding: 28px 24px 40px;
+        gap: 20px;
         border-bottom: 1px solid var(--border-primary);
+        overflow-y: auto;
     }
 
     .nav-links.open {
         display: flex;
     }
 
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        font-size: 0.82rem;
+    }
+
     .nav-toggle {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
     }
 
     .about-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
 
+    .stat-card {
+        padding: 18px 12px;
+    }
+
+    .stat-number {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
     .projects-grid {
-        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 0;
+        padding-bottom: 4px;
+    }
+
+    .projects-carousel {
+        padding: 0 44px;
+    }
+
+    .projects-control-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .projects-control-left {
+        left: 4px;
+    }
+
+    .projects-control-right {
+        right: 4px;
+    }
+
+    .project-card {
+        flex-basis: min(340px, calc(100vw - 120px));
     }
 
     .testimonials-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+
+    .skill-category {
+        padding: 24px;
     }
 
     .timeline {
         padding-left: 30px;
+        margin-top: 40px;
     }
 
     .achievements-layout {
@@ -1340,14 +1495,46 @@
         left: 6px;
     }
 
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-content:hover {
+        transform: none;
+    }
+
+    .timeline-header h3 {
+        font-size: 1.02rem;
+    }
+
     .hero-actions {
         flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
 
     .hero-layout {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 40px;
+        gap: 30px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: calc(var(--nav-height) + 28px) 0 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-tagline {
+        letter-spacing: 4px;
+    }
+
+    .hero-description {
+        margin: 0 auto 28px;
+        font-size: 0.98rem;
     }
 
     .hero-image-circle {
@@ -1366,11 +1553,173 @@
     .btn-primary,
     .btn-outline {
         text-align: center;
+        width: min(320px, 100%);
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+    }
+
+    .project-body {
+        padding: 18px;
+    }
+
+    .project-links {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .project-links a {
+        min-height: 42px;
+        padding: 10px 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .achievements-detail-card {
+        padding: 22px;
+    }
+
+    .achievements-detail-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-form {
+        padding: 24px;
+    }
+
+    .contact-info-item {
+        margin-top: 24px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-submit {
+        font-size: 16px;
+    }
+
+    .testimonial-card {
+        padding: 24px;
     }
 
     .footer .container {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+
+    .footer-socials a {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --nav-height: 64px;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .section-title {
+        font-size: clamp(1.65rem, 9vw, 2.2rem);
+    }
+
+    .nav-logo {
+        font-size: 0.86rem;
+        letter-spacing: 1.2px;
+    }
+
+    .hero-name {
+        font-size: clamp(2.2rem, 14vw, 3.1rem);
+    }
+
+    .hero-tagline {
+        font-size: 0.94rem;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+    }
+
+    .hero-greeting {
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    .hero-image-circle {
+        width: 168px;
+        height: 168px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .project-image,
+    .project-image-placeholder {
+        height: 180px;
+    }
+
+    .projects-control-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.88rem;
+    }
+
+    .projects-carousel {
+        padding: 0 16px;
+    }
+
+    .projects-control-left {
+        left: 0;
+    }
+
+    .projects-control-right {
+        right: 0;
+    }
+
+    .project-card {
+        flex-basis: calc(100vw - 40px);
+    }
+
+    .project-card {
+        flex-basis: calc(100vw - 28px);
+    }
+
+    .project-tech span,
+    .timeline-tech span,
+    .skill-tag {
+        font-size: 0.75rem;
+    }
+
+    .contact-form {
+        padding: 18px;
+    }
+
+    .contact-info-icon {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
     }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 // Fallback sample projects in case the backend is not running
 const sampleProjects = [
@@ -49,12 +49,41 @@ const sampleProjects = [
         liveUrl: "https://plant-disease-detection-bay.vercel.app/",
         image: "/image.png",
     },
+    {
+        _id: "4",
+        title: "PCB Generating Pipeline",
+        description:
+            "Built a PCB generation pipeline to move from circuit ideas to manufacturable board outputs, improving design iteration speed and reducing manual rework.",
+        technologies: ["Python", "Automation", "PCB Design", "Electronics"],
+        githubUrl: null,
+        liveUrl: null,
+        image: "/image.png",
+    },
 ];
 
 const projectEmojis = ["🛒", "💬", "📋", "🎨", "📊", "🔧"];
 
 function Projects() {
     const projects = sampleProjects;
+    const scrollerRef = useRef(null);
+
+    const scrollProjects = (direction) => {
+        const scroller = scrollerRef.current;
+        if (!scroller) {
+            return;
+        }
+
+        const firstCard = scroller.querySelector(".project-card");
+        const gridStyle = window.getComputedStyle(scroller);
+        const gap = parseFloat(gridStyle.columnGap || gridStyle.gap || "0");
+        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 280;
+        const amount = Math.max(260, Math.floor(cardWidth + gap));
+
+        scroller.scrollBy({
+            left: direction === "left" ? -amount : amount,
+            behavior: "smooth",
+        });
+    };
 
     return (
         <section className="section projects" id="projects">
@@ -66,57 +95,77 @@ function Projects() {
                     building great software.
                 </p>
 
-                <div className="projects-grid">
-                    {projects.map((project, idx) => (
-                        <div
-                            className="project-card animate-in"
-                            key={project._id}
-                            style={{ animationDelay: `${idx * 0.15}s` }}
-                        >
-                            {project.image ? (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="project-image"
-                                />
-                            ) : (
-                                <div className="project-image-placeholder">
-                                    {projectEmojis[idx % projectEmojis.length]}
-                                </div>
-                            )}
-                            <div className="project-body">
-                                <h3>{project.title}</h3>
-                                <p>{project.description}</p>
-                                <div className="project-tech">
-                                    {project.technologies.map((tech) => (
-                                        <span key={tech}>{tech}</span>
-                                    ))}
-                                </div>
-                                <div className="project-links">
-                                    {project.githubUrl && (
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="project-link-github"
-                                        >
-                                            GitHub
-                                        </a>
-                                    )}
-                                    {project.liveUrl && (
-                                        <a
-                                            href={project.liveUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="project-link-live"
-                                        >
-                                            Live Demo
-                                        </a>
-                                    )}
+                <div className="projects-carousel" aria-label="Project carousel controls">
+                    <button
+                        type="button"
+                        className="projects-control-btn projects-control-left"
+                        aria-label="Scroll projects left"
+                        onClick={() => scrollProjects("left")}
+                    >
+                        &lt;
+                    </button>
+
+                    <div className="projects-grid" ref={scrollerRef}>
+                        {projects.map((project, idx) => (
+                            <div
+                                className="project-card animate-in"
+                                key={project._id}
+                                style={{ animationDelay: `${idx * 0.15}s` }}
+                            >
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="project-image"
+                                    />
+                                ) : (
+                                    <div className="project-image-placeholder">
+                                        {projectEmojis[idx % projectEmojis.length]}
+                                    </div>
+                                )}
+                                <div className="project-body">
+                                    <h3>{project.title}</h3>
+                                    <p>{project.description}</p>
+                                    <div className="project-tech">
+                                        {project.technologies.map((tech) => (
+                                            <span key={tech}>{tech}</span>
+                                        ))}
+                                    </div>
+                                    <div className="project-links">
+                                        {project.githubUrl && (
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="project-link-github"
+                                            >
+                                                GitHub
+                                            </a>
+                                        )}
+                                        {project.liveUrl && (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="project-link-live"
+                                            >
+                                                Live Demo
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+
+                    <button
+                        type="button"
+                        className="projects-control-btn projects-control-right"
+                        aria-label="Scroll projects right"
+                        onClick={() => scrollProjects("right")}
+                    >
+                        &gt;
+                    </button>
                 </div>
             </div>
         </section>

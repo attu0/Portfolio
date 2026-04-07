@@ -10,6 +10,35 @@ function Navigation() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                setMenuOpen(false);
+            }
+        };
+
+        const handleEsc = (event) => {
+            if (event.key === "Escape") {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("keydown", handleEsc);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("keydown", handleEsc);
+        };
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [menuOpen]);
+
     const handleLinkClick = () => setMenuOpen(false);
 
     return (
@@ -32,6 +61,7 @@ function Navigation() {
                     className="nav-toggle"
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="Toggle navigation"
+                    aria-expanded={menuOpen}
                     id="nav-toggle"
                 >
                     <span></span>
