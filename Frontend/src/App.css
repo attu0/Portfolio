@@ -664,7 +664,8 @@
 .project-image {
     width: 100%;
     height: 220px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #090d14;
     border-bottom: 1px solid var(--border-primary);
 }
 

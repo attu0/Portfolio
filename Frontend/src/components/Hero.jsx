@@ -31,7 +31,7 @@ function Hero() {
                     <div className="hero-image-circle">
                         {!imgError ? (
                             <img
-                                src="/profile.jpg"
+                                src="/profile2.jpg"
                                 alt="Atharv Mudse"
                                 onError={() => setImgError(true)}
                             />
