@@ -57,7 +57,7 @@ const sampleProjects = [
         technologies: ["Python", "Automation", "PCB Design", "Electronics"],
         githubUrl: null,
         liveUrl: null,
-        image: "/image.png",
+        image: "/pcb.png",
     },
 ];
 
