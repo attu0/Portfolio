@@ -40,16 +40,6 @@ const sampleProjects = [
     image: "/articubot2.jpg",
   },
   {
-    _id: "3",
-    title: "Plant Disease Detection | Crop Care",
-    description:
-      "Developed an end-to-end CNN-based plant disease classification system with 98% accuracy on a 16GB dataset, built a FastAPI REST API for efficient model serving, and created a React interface for real-time image upload, prediction visualization, and natural remedy recommendations.",
-    technologies: ["Python", "TensorFlow", "FastAPI", "React", "CNN"],
-    githubUrl: "https://github.com/attu0/Plant-Disease-Detection",
-    liveUrl: "https://plant-disease-detection-bay.vercel.app/",
-    image: "/image.png",
-  },
-  {
     _id: "4",
     title: "PCB Generating Pipeline",
     description:
@@ -58,6 +48,17 @@ const sampleProjects = [
     githubUrl: null,
     liveUrl: null,
     image: "/pcb.png",
+    isWinner: true,
+  },
+  {
+    _id: "3",
+    title: "Plant Disease Detection | Crop Care",
+    description:
+      "Developed an end-to-end CNN-based plant disease classification system with 98% accuracy on a 16GB dataset, built a FastAPI REST API for efficient model serving, and created a React interface for real-time image upload, prediction visualization, and natural remedy recommendations.",
+    technologies: ["Python", "TensorFlow", "FastAPI", "React", "CNN"],
+    githubUrl: "https://github.com/attu0/Plant-Disease-Detection",
+    liveUrl: "https://plant-disease-detection-bay.vercel.app/",
+    image: "/image.png",
   },
 ];
 
@@ -111,7 +112,7 @@ function Projects() {
           <div className="projects-grid" ref={scrollerRef}>
             {projects.map((project, idx) => (
               <div
-                className="project-card animate-in"
+                className={`project-card animate-in ${project.isWinner ? "project-card-winner" : ""}`}
                 key={project._id}
                 style={{ animationDelay: `${idx * 0.15}s` }}
               >
@@ -135,6 +136,11 @@ function Projects() {
                     ))}
                   </div>
                   <div className="project-links">
+                    {project.isWinner && (
+                      <div className="winner-badge">
+                        <span>🏆</span> Winner
+                      </div>
+                    )}
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
