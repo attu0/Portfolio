@@ -37,6 +37,25 @@ const fallbackAchievementsAndEvents = [
         image: "/sih.jpg",
         description: "Qualified the internal hackathon round for Smart India Hackathon 2025.",
     },
+    {
+        _id: "9",
+        title: "Project Showcase at Kaneri Math",
+        organization: "College Representation",
+        date: "2026",
+        type: "Event",
+        image: "/20260404_104832.jpg",
+        description: "We visited Kaneri Math to represent our college and showcase our projects.",
+    },
+    {
+        _id: "10",
+        title: "Gemini API Spotlight - Cash Award",
+        organization: "Physical AI Hackathon",
+        date: "2026",
+        type: "Achievement",
+        image: "/Kochi.jpeg",
+        description: "Won a ₹10,000 cash award for a distinctive use of the Gemini API, recognized for clear product sense, responsible design, and a memorable demo at the Physical AI Hackathon.",
+    },
+    
 ];
 
 function AchievementsEvents() {

@@ -18,7 +18,8 @@ const sampleProjects = [
     ],
     githubUrl: "https://github.com/attu0/Spartan",
     liveUrl: null,
-    image: "/Disease%20Diagnosis%20Treatment%20Rover.png",
+    image: "SpartansRover.jpeg",
+    isWinner: true,
   },
   {
     _id: "2",
