@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+
 function Contact() {
     const [formData, setFormData] = useState({
         name: "",
@@ -19,10 +21,26 @@ function Contact() {
         setSending(true);
         setStatus(null);
 
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setSending(false);
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/contact`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error("Contact request failed");
+            }
+
+            setStatus("success");
+            setFormData({ name: "", email: "", subject: "", message: "" });
+        } catch (error) {
+            setStatus("error");
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -119,7 +137,7 @@ function Contact() {
 
                     {status === "success" && (
                         <div className="form-status success">
-                            ✅ Message submitted locally. Please email me directly for a response.
+                            ✅ Message sent successfully.
                         </div>
                     )}
                     {status === "error" && (

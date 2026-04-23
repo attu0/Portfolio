@@ -19,6 +19,7 @@ A personal portfolio built with React and Vite. The site highlights robotics, AI
 - React 19
 - Vite 7
 - Plain CSS (custom component styling)
+- FastAPI backend for contact and portfolio metadata
 
 ## Project Structure
 
@@ -36,6 +37,12 @@ Portfolio/
 |   |-- package.json
 |   |-- vite.config.js
 |   `-- vercel.json
+|-- backend/
+|   |-- app/
+|   |   |-- __init__.py
+|   |   `-- main.py
+|   |-- README.md
+|   `-- requirements.txt
 `-- README.md
 ```
 
@@ -91,5 +98,18 @@ Static images are served from `frontend/public`.
 
 ## Notes
 
-- The contact form currently simulates submission locally and shows a success message.
-- No backend/API dependency is required to run the current project.
+- The contact form now posts to the FastAPI backend.
+- The backend can be run independently if you want the contact form to submit for real.
+- The backend lives in `backend/` and can be run independently with FastAPI.
+
+## Backend Development
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+The backend exposes a contact endpoint at `POST /api/contact` and allows local frontend origins through CORS.
