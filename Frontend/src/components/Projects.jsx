@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 // Fallback sample projects in case the backend is not running
 const sampleProjects = [
@@ -18,6 +18,7 @@ const sampleProjects = [
     ],
     githubUrl: "https://github.com/attu0/Spartan",
     liveUrl: null,
+    mediaUrl: "https://drive.google.com/",
     image: "SpartansRover.jpeg",
     isWinner: true,
   },
@@ -38,6 +39,7 @@ const sampleProjects = [
     ],
     githubUrl: "https://github.com/attu0/articubot_two",
     liveUrl: null,
+    mediaUrl: "https://drive.google.com/",
     image: "/articubot2.jpg",
   },
   {
@@ -48,6 +50,7 @@ const sampleProjects = [
     technologies: ["Python", "Automation", "PCB Design", "Electronics"],
     githubUrl: null,
     liveUrl: null,
+    mediaUrl: "https://drive.google.com/",
     image: "/pcb.png",
     isWinner: true,
   },
@@ -59,6 +62,7 @@ const sampleProjects = [
     technologies: ["Python", "TensorFlow", "FastAPI", "React", "CNN"],
     githubUrl: "https://github.com/attu0/Plant-Disease-Detection",
     liveUrl: "https://plant-disease-detection-bay.vercel.app/",
+    mediaUrl: "https://drive.google.com/",
     image: "/image.png",
   },
 ];
@@ -67,24 +71,22 @@ const projectEmojis = ["🛒", "💬", "📋", "🎨", "📊", "🔧"];
 
 function Projects() {
   const projects = sampleProjects;
-  const scrollerRef = useRef(null);
+  const [current, setCurrent] = useState(0);
 
-  const scrollProjects = (direction) => {
-    const scroller = scrollerRef.current;
-    if (!scroller) {
-      return;
-    }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % projects.length);
+    }, 5000);
 
-    const firstCard = scroller.querySelector(".project-card");
-    const gridStyle = window.getComputedStyle(scroller);
-    const gap = parseFloat(gridStyle.columnGap || gridStyle.gap || "0");
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 280;
-    const amount = Math.max(260, Math.floor(cardWidth + gap));
+    return () => clearInterval(timer);
+  }, [projects.length]);
 
-    scroller.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
+  const showPrevious = () => {
+    setCurrent((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const showNext = () => {
+    setCurrent((prev) => (prev + 1) % projects.length);
   };
 
   return (
@@ -97,73 +99,86 @@ function Projects() {
           building great software.
         </p>
 
-        <div
-          className="projects-carousel"
-          aria-label="Project carousel controls"
-        >
+        <div className="projects-carousel" aria-label="Project spotlight carousel">
           <button
             type="button"
             className="projects-control-btn projects-control-left"
-            aria-label="Scroll projects left"
-            onClick={() => scrollProjects("left")}
+            aria-label="Show previous project"
+            onClick={showPrevious}
           >
             &lt;
           </button>
 
-          <div className="projects-grid" ref={scrollerRef}>
+          <div className="projects-showcase">
             {projects.map((project, idx) => (
               <div
-                className={`project-card animate-in ${project.isWinner ? "project-card-winner" : ""}`}
+                className={`project-slide ${idx === current ? "active" : ""}`}
                 key={project._id}
-                style={{ animationDelay: `${idx * 0.15}s` }}
               >
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                  />
-                ) : (
-                  <div className="project-image-placeholder">
-                    {projectEmojis[idx % projectEmojis.length]}
-                  </div>
-                )}
-                <div className="project-body">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="project-tech">
-                    {project.technologies.map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
-                  </div>
-                  <div className="project-links">
-                    {project.isWinner && (
-                      <div className="winner-badge">
-                        <span>🏆</span> Winner
+                <article
+                  className={`project-card project-spotlight animate-in ${project.isWinner ? "project-card-winner" : ""}`}
+                >
+                  <div className="project-media">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="project-image"
+                      />
+                    ) : (
+                      <div className="project-image-placeholder">
+                        {projectEmojis[idx % projectEmojis.length]}
                       </div>
                     )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-github"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-live"
-                      >
-                        Live Demo
-                      </a>
-                    )}
                   </div>
-                </div>
+
+                  <div className="project-body">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <div className="project-tech">
+                      {project.technologies.map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      {project.isWinner && (
+                        <div className="winner-badge">
+                          <span>🏆</span> Winner
+                        </div>
+                      )}
+                      {project.mediaUrl && (
+                        <a
+                          href={project.mediaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-watch"
+                        >
+                          Watch More
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-github"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-live"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
               </div>
             ))}
           </div>
@@ -171,11 +186,23 @@ function Projects() {
           <button
             type="button"
             className="projects-control-btn projects-control-right"
-            aria-label="Scroll projects right"
-            onClick={() => scrollProjects("right")}
+            aria-label="Show next project"
+            onClick={showNext}
           >
             &gt;
           </button>
+        </div>
+
+        <div className="projects-dots" aria-label="Project slide navigation">
+          {projects.map((project, idx) => (
+            <button
+              key={project._id}
+              className={`projects-dot ${idx === current ? "active" : ""}`}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Show ${project.title}`}
+              type="button"
+            />
+          ))}
         </div>
       </div>
     </section>
