@@ -46,7 +46,7 @@ const sampleProjects = [
     _id: "4",
     title: "PCB Generating Pipeline",
     description:
-      "Designed and implemented an automated PCB generation pipeline that converts circuit schematics into manufacturable board layouts, reducing manual design effort and accelerating iteration cycles. Integrated Python-based automation for component placement, routing optimization, and design rule checks (DRC), enabling faster prototyping and minimizing human errors in PCB design workflows.",
+      "Designed and implemented an automated PCB generation pipeline that converts NLP into manufacturable board layouts, reducing manual design effort and accelerating iteration cycles. Integrated Python-based automation for component placement, routing optimization, and design rule checks (DRC), enabling faster prototyping and minimizing human errors in PCB design workflows.",
     technologies: ["Python", "Automation", "PCB Design", "Electronics"],
     githubUrl: null,
     liveUrl: null,
