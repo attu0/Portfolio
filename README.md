@@ -113,3 +113,6 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The backend exposes a contact endpoint at `POST /api/contact` and allows local frontend origins through CORS.
+
+#To do
+-- connect with backend for direct mail for contact 
