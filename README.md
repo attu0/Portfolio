@@ -1,59 +1,72 @@
 # Atharv Mudse Portfolio
 
-A personal portfolio built with React and Vite. The site highlights robotics, AI, and software work through animated sections, project cards, timelines, and a contact form.
+A modern and responsive portfolio website built with **React** and **Vite**, showcasing my work in **Robotics, Artificial Intelligence, Computer Vision, and Software Development**. The portfolio features interactive animations, project highlights, professional experience, achievements, and a contact system powered by FastAPI.
 
-## Features
+## ✨ Features
 
-- Responsive single-page layout with smooth section navigation
-- Hero section with profile image fallback logic
-- About section with auto-rotating slideshow
-- Skills grouped by category (Robotics, AI/Vision, CSE stack, Tools)
-- Work experience timeline
-- Achievements and events slideshow
-- Featured projects with GitHub and Live Demo links
-- Education and testimonials sections
-- Contact form UI with local success state (no backend submission)
+* Responsive single-page design with smooth scrolling navigation
+* Dynamic hero section with profile image fallback support
+* Interactive About section with an auto-rotating slideshow
+* Categorized technical skills:
 
-## Tech Stack
+  * Robotics & ROS 2
+  * AI & Computer Vision
+  * Software Development
+  * Development Tools
+* Professional experience timeline
+* Achievements and event highlights carousel
+* Featured projects with GitHub repositories and live demos
+* Education and testimonials sections
+* Contact form integrated with a FastAPI backend
 
-- React 19
-- Vite 7
-- Plain CSS (custom component styling)
-- FastAPI backend for contact and portfolio metadata
+## 🛠️ Tech Stack
 
-## Project Structure
+### Frontend
+
+* React 19
+* Vite 7
+* HTML5, CSS3, JavaScript
+
+### Backend
+
+* FastAPI
+* Python
+
+## 📁 Project Structure
 
 ```text
 Portfolio/
-|-- frontend/
-|   |-- public/
-|   |-- src/
-|   |   |-- components/
-|   |   |-- App.jsx
-|   |   |-- App.css
-|   |   |-- index.css
-|   |   `-- main.jsx
-|   |-- index.html
-|   |-- package.json
-|   |-- vite.config.js
-|   `-- vercel.json
-|-- backend/
-|   |-- app/
-|   |   |-- __init__.py
-|   |   `-- main.py
-|   |-- README.md
-|   `-- requirements.txt
-`-- README.md
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── vercel.json
+│
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── requirements.txt
+│   └── README.md
+│
+└── README.md
 ```
 
-## Local Development
+## 🚀 Local Development
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+* Node.js 18+
+* npm
 
-### Install and run
+### Run Frontend
 
 ```bash
 cd frontend
@@ -61,9 +74,13 @@ npm install
 npm run dev
 ```
 
-The app runs at `http://localhost:3000` (configured in `frontend/vite.config.js`).
+The application will be available at:
 
-## Build and Preview
+```text
+http://localhost:3000
+```
+
+## 📦 Build for Production
 
 ```bash
 cd frontend
@@ -71,48 +88,85 @@ npm run build
 npm run preview
 ```
 
-- Production build output: `frontend/dist`
+Production files are generated inside:
 
-## Deployment
+```text
+frontend/dist
+```
 
-This repo includes `frontend/vercel.json` for Vite deployment on Vercel:
+## 🌐 Deployment
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- SPA rewrites enabled to route all paths to `index.html`
+The project includes a `vercel.json` configuration for seamless deployment on Vercel.
 
-## Content Customization
+**Build Command**
 
-Most site content is currently maintained as local arrays inside component files:
+```bash
+npm run build
+```
 
-- About slideshow: `frontend/src/components/About.jsx`
-- Skills: `frontend/src/components/Skills.jsx`
-- Experience: `frontend/src/components/Experience.jsx`
-- Achievements and events: `frontend/src/components/AchievementsEvents.jsx`
-- Projects: `frontend/src/components/Projects.jsx`
-- Education: `frontend/src/components/Education.jsx`
-- Testimonials: `frontend/src/components/Testimonials.jsx`
-- Contact details and messaging: `frontend/src/components/Contact.jsx`
+**Output Directory**
 
-Static images are served from `frontend/public`.
+```text
+dist
+```
 
-## Notes
+SPA rewrites are configured to ensure proper routing for all pages.
 
-- The contact form now posts to the FastAPI backend.
-- The backend can be run independently if you want the contact form to submit for real.
-- The backend lives in `backend/` and can be run independently with FastAPI.
+## 🎨 Content Customization
 
-## Backend Development
+Most portfolio content is managed through component-level data arrays:
+
+| Section               | File                                             |
+| --------------------- | ------------------------------------------------ |
+| About                 | `frontend/src/components/About.jsx`              |
+| Skills                | `frontend/src/components/Skills.jsx`             |
+| Experience            | `frontend/src/components/Experience.jsx`         |
+| Achievements & Events | `frontend/src/components/AchievementsEvents.jsx` |
+| Projects              | `frontend/src/components/Projects.jsx`           |
+| Education             | `frontend/src/components/Education.jsx`          |
+| Testimonials          | `frontend/src/components/Testimonials.jsx`       |
+| Contact               | `frontend/src/components/Contact.jsx`            |
+
+Static assets and images are stored in:
+
+```text
+frontend/public/
+```
+
+## 🔧 Backend Setup
 
 ```bash
 cd backend
+
 python -m venv .venv
+
+# Windows
 .venv\Scripts\activate
+
+# Linux/macOS
+source .venv/bin/activate
+
 pip install -r requirements.txt
+
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The backend exposes a contact endpoint at `POST /api/contact` and allows local frontend origins through CORS.
+### API Endpoint
 
-#To do
--- connect with backend for direct mail for contact 
+```http
+POST /api/contact
+```
+
+The backend handles contact form submissions and includes CORS support for local frontend development.
+
+## 📌 Roadmap
+
+* [ ] Email integration for direct contact form submissions
+* [ ] Admin dashboard for message management
+* [ ] Blog section for robotics and AI projects
+* [ ] Project filtering and search functionality
+* [ ] Dark/Light theme toggle
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
