@@ -19,6 +19,41 @@
     z-index: 0;
 }
 
+/* Starfield */
+.starfield {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.starfield .star {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.2) 70%, rgba(255,255,255,0) 100%);
+    box-shadow: 0 0 8px rgba(255,255,255,0.85);
+    will-change: opacity, transform, filter;
+    animation-name: twinkle;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+@keyframes twinkle {
+    0% {
+        filter: brightness(0);
+        opacity: 0.05;
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+    100% {
+        filter: brightness(1.5);
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
 .orb {
     position: absolute;
     border-radius: 50%;
