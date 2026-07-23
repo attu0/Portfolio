@@ -2,6 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 
 const fallbackAchievementsAndEvents = [
     {
+        _id: "11",
+        title: "Attended ACM India Summer School at IISc",
+        organization: "ACM India · Indian Institute of Science (IISc), Bengaluru",
+        date: "July 2026",
+        type: "Event",
+        image: "/20260707_085758.jpg",
+        description: "Got the opportunity to attend the ACM India Summer School at IISc and learn from expert sessions on advanced computing and research-oriented problem solving.",
+    },
+    {
         _id: "0",
         title: "1st Rank - National Level 24-Hour Hackathon",
         organization: "KE Society's Rajarambapu Institute of Technology",

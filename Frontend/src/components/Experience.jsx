@@ -2,6 +2,17 @@ import React from "react";
 
 const fallbackExperiences = [
     {
+        _id: "3",
+        role: "Robotics Intern",
+        company: "Taikisha Engineering India Pvt. Ltd.",
+        location: "Pune, Maharashtra",
+        startDate: "June 2026",
+        endDate: "July 2026",
+        description:
+            "Completed a 15-day internship focused on ROS-based AGV/AMR systems, industrial robotic applications, and embedded systems integration. Demonstrated strong interest, worked diligently, and stayed focused on assigned activities throughout the internship.",
+        technologies: ["ROS", "AGV", "AMR", "Robotics", "Embedded Systems","Perception","Navigation"],
+    },
+    {
         _id: "1",
         role: "AI Developer Intern",
         company: "Cognidolph",
