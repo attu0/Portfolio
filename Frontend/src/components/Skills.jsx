@@ -2,36 +2,39 @@ import React from "react";
 
 const categorizedSkills = [
     {
-        category: "Robotics (Primary)",
+        category: "Robotics",
         skills: [
-            "ROS2 Humble",
+            "ROS2 Humble, Jazzy",
             "Nav2",
-            "SLAM",
-            "LiDAR",
-            "Sensor Fusion (EKF)",
-            "Raspberry Pi",
-            "Arduino",
+            "ros2 control",
+            "MoveIt",
+            "Docker",
         ],
     },
     {
-        category: "AI & Vision",
-        skills: ["Python", "Computer Vision", "TensorFlow", "CNN", "Whisper", "Ollama"],
+        category: "Navigation & Perception",
+        skills: ["SLAM", "Robot Localization", "AMCL", "Path Planning", "Control Systems"],
     },
     {
-        category: "CSE Stack",
+        category: "Sensors & Processors",
         skills: [
-            "React",
-            "JavaScript",
-            "Node.js",
-            "Express.js",
-            "FastAPI",
-            "REST APIs",
-            "MongoDB",
+            "Raspberry Pi",
+            "JaNUCvaScript",
+            "Nvidia Jetson",
+            "Arduino Uno Q",
+            "Lidar",
+            "IMU",
+            "Depth Camera",
         ],
+
     },
     {
-        category: "Tools",
-        skills: ["Git", "GitHub", "Vite", "Fusion 360"],
+        category: "Programming",
+        skills: ["Python", "C++", "C", "Rust"],
+    },
+    {
+        category: "Simulation",
+        skills: ["Gazebo (GZ sim, Classic)", " Issac Sim", "URDF Validation"],
     },
 ];
 

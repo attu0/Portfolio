@@ -77,7 +77,7 @@ function About() {
               <div className="stat-label">Robotics Projects</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">2</div>
+              <div className="stat-number">3</div>
               <div className="stat-label">Patent Filed</div>
             </div>
           </div>
