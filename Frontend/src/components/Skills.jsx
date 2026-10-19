@@ -7,13 +7,13 @@ const categorizedSkills = [
             "ROS2 Humble, Jazzy",
             "Nav2",
             "ros2 control",
-            "MoveIt",
+            "MoveIt2",
             "Docker",
         ],
     },
     {
         category: "Navigation & Perception",
-        skills: ["SLAM", "Robot Localization", "AMCL", "Path Planning", "Control Systems"],
+        skills: ["SLAM", "Robot Localization", "AMCL", "Path Planning", "Control Systems","Computer Vision"],
     },
     {
         category: "Sensors & Processors",
@@ -34,7 +34,7 @@ const categorizedSkills = [
     },
     {
         category: "Simulation",
-        skills: ["Gazebo (GZ sim, Classic)", " Issac Sim", "URDF Validation"],
+        skills: ["Gazebo (GZ sim, Classic)", " Issac Sim", "URDF Validation","Mujoco"],
     },
 ];
 

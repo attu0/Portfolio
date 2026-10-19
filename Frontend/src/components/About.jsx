@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 
 const fallbackSlides = [
   { title: "Me On Mic", image: "/meonmike.png" },
-  { title: "Profile", image: "/20251219_140755.jpg" },
+  { title: "Profile", image: "/quantum2k26.jpeg" },
   { title: "Summer school at IISC", image: "/img.png" },
-  {title: "Disease Diagnosis Treatment Rover",image: "/Disease%20Diagnosis%20Treatment%20Rover.png",},
+  {title: "Disease Diagnosis Treatment Rover",image: "/Spartan.jpeg",},
 ];
 
 function About() {

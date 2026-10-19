@@ -64,7 +64,15 @@ const fallbackAchievementsAndEvents = [
         image: "/Kochi.jpeg",
         description: "Won a ₹10,000 cash award for a distinctive use of the Gemini API, recognized for clear product sense, responsible design, and a memorable demo at the Physical AI Hackathon.",
     },
-    
+    {
+        _id: "12",
+        title: "Quantum 2k26 - Cash Award",
+        organization: "RIT",
+        date: "2026",
+        type: "Achievement",
+        image: "/quantum2k26.jpeg",
+        description: "Won a ₹3,000 cash award for a developing a Autonomus Rover Benzene.",
+    },
 ];
 
 function AchievementsEvents() {
