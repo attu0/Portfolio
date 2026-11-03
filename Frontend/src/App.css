@@ -27,6 +27,12 @@
     z-index: 0;
 }
 
+.download-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
 .starfield .star {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -309,11 +315,22 @@
 }
 
 .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    animation: fadeInUp 0.8s var(--ease-out) 1s both;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 14px;
+  margin-top: 30px;
+  justify-content: start;
+  align-items: center;
 }
+
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 145px;
+  gap: 8px;
+}
+
 
 .btn-primary {
     padding: 14px 32px;
