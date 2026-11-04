@@ -42,7 +42,7 @@ const projects = [
       "Docker",
     ],
     githubUrl: "https://github.com/attu0/benzene",
-    liveUrl: null,
+    liveUrl: "https://benzene-site.vercel.app/",
     mediaUrl: "https://drive.google.com/",
     image: "/BenzeneNew.jpeg",
     imagePosition: "center",
@@ -224,7 +224,7 @@ function Projects() {
                       rel="noopener noreferrer"
                       className="project-link-live"
                     >
-                      Live Demo
+                      Site
                     </a>
                   )}
                 </div>
