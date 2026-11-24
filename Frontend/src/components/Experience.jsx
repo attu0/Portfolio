@@ -27,7 +27,7 @@ const fallbackExperiences = [
         _id: "2",
         role: "Python Developer",
         company: "Elmaze - NETRA RIT",
-        location: "Islampur, Sangli, Mahrastra",
+        location: "Islampur, Sangli, Maharashtra",
         startDate: "April 2024",
         endDate: " May 2024",
         description:

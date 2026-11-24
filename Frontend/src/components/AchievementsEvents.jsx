@@ -71,7 +71,7 @@ const fallbackAchievementsAndEvents = [
         date: "2026",
         type: "Achievement",
         image: "/quantum2k26.jpeg",
-        description: "Won a ₹3,000 cash award for a developing a Autonomus Rover Benzene.",
+        description: "Won a ₹3,000 cash award for developing an Autonomous Rover (Benzene).",
     },
 ];
 
