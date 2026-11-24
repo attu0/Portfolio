@@ -80,6 +80,8 @@ function AchievementsEvents() {
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const timerRef = useRef(null);
+    const touchStartXRef = useRef(null);
+    const touchEndXRef = useRef(null);
 
     useEffect(() => {
         if (isPaused) {
@@ -88,10 +90,34 @@ function AchievementsEvents() {
 
         timerRef.current = setInterval(() => {
             setCurrent((prev) => (prev + 1) % items.length);
-        }, 3000);
+        }, 3500);
 
         return () => clearInterval(timerRef.current);
     }, [isPaused, items.length]);
+
+    const handleTouchStart = (e) => {
+        setIsPaused(true);
+        touchStartXRef.current = e.touches[0].clientX;
+        touchEndXRef.current = null;
+    };
+
+    const handleTouchMove = (e) => {
+        touchEndXRef.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        setIsPaused(false);
+        if (touchStartXRef.current !== null && touchEndXRef.current !== null) {
+            const diff = touchStartXRef.current - touchEndXRef.current;
+            if (diff > 40) {
+                setCurrent((prev) => (prev + 1) % items.length);
+            } else if (diff < -40) {
+                setCurrent((prev) => (prev - 1 + items.length) % items.length);
+            }
+        }
+        touchStartXRef.current = null;
+        touchEndXRef.current = null;
+    };
 
     const activeItem = items[current];
 
@@ -103,6 +129,9 @@ function AchievementsEvents() {
                         className="achievements-visual animate-in"
                         onMouseEnter={() => setIsPaused(true)}
                         onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
                     >
                         <div className="achievements-slideshow">
                             {items.map((item, idx) => (

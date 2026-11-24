@@ -12,7 +12,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./App.css";
 
-function Starfield({ count = 80 }) {
+function Starfield() {
+    const count = typeof window !== "undefined" && window.innerWidth < 768 ? 36 : 75;
     const stars = useMemo(() =>
         Array.from({ length: count }).map(() => ({
             left: `${Math.random() * 100}%`,

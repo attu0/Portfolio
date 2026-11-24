@@ -44,10 +44,10 @@ function Navigation() {
     return (
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
             <div className="container">
-                <a href="#" className="nav-logo">
+                <a href="#" className="nav-logo" onClick={handleLinkClick}>
                     &lt;Atharv Mudse/&gt;
                 </a>
-                <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+                <ul className={`nav-links ${menuOpen ? "open" : ""}`} id="nav-menu">
                     <li><a href="#about" onClick={handleLinkClick}>About</a></li>
                     <li><a href="#skills" onClick={handleLinkClick}>Skills</a></li>
                     <li><a href="#experience" onClick={handleLinkClick}>Experience</a></li>
@@ -58,17 +58,24 @@ function Navigation() {
                     <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
                 </ul>
                 <button
-                    className="nav-toggle"
+                    className={`nav-toggle ${menuOpen ? "open" : ""}`}
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="Toggle navigation"
                     aria-expanded={menuOpen}
+                    aria-controls="nav-menu"
                     id="nav-toggle"
                 >
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span className="bar bar-1"></span>
+                    <span className="bar bar-2"></span>
+                    <span className="bar bar-3"></span>
                 </button>
             </div>
+            {/* Backdrop overlay for mobile menu */}
+            <div
+                className={`nav-backdrop ${menuOpen ? "open" : ""}`}
+                onClick={() => setMenuOpen(false)}
+                aria-hidden="true"
+            />
         </nav>
     );
 }
